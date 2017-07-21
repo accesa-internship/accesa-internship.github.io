@@ -1,6 +1,4 @@
-import Reveal from 'reveal';
 
-var libPath = '../node_modules/reveal.js/';
 
 Reveal.initialize({
     // Display controls in the bottom right corner

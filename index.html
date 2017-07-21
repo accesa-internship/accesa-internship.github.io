@@ -13,6 +13,10 @@
 
     <link rel="alternate" hreflang="en" href="http://www.accesa.eu" />
     <link rel="alternate" hreflang="de" href="http://www.accesa.eu?lang=de" />
+    <link rel="stylesheet" href="./src/css/reveal.css" />
+    <link rel="stylesheet" href="./src/css/zenburn.css" />
+    <link rel="stylesheet" href="./src/css/moon.css" />
+    <link rel="stylesheet" href="./src/css/styles.css" />
 </head>
 <body>
   
@@ -20,7 +24,7 @@
     <div class="slides">
 
         <section>
-            <section class="html-logo"><img src="../assets/html5.png" /></section>
+            <section class="html-logo"><img src="assets/html5.png" /></section>
             <section>Use <pre class="inline"><code>&lt;!DOCTYPE html&gt;</code></pre> at the beginning of each HTML file</section>
             <section>Include all <pre class="inline"><code>&lt;link&gt;</code></pre> tags inside <pre class="inline"><code>&lt;head&gt;</code></pre></section>
             <section>Include all <pre class="inline"><code>&lt;script&gt;</code></pre> tags right before the <pre class="inline"><code>&lt;/body&gt;</code></pre> tag </section>
@@ -43,10 +47,10 @@
             <section>Be aware of which tags should be properly closed using end tags (e.g.: <pre class="inline"><code>&lt;/div&gt;, &lt;/script&gt;</code></pre>) and which tags don't need to be closed (e.g.: <pre class="inline"><code>&lt;input&gt;</code></pre> )</section>
         </section>
         <section>
-            <section class="css-logo"><img src="../assets/css3.png" /></section>
+            <section class="css-logo"><img src="assets/css3.png" /></section>
             <section>Use classes (e.g.: <pre class="inline"><code class="css">.container</code></pre>) wherever possible and avoid using IDs (e.g.: <pre class="inline"><code class="css">#myButton</code></pre>) for styling</section>
             <section>Use 'normalize.css' <br /> (<pre class="inline"><code>https://necolas.github.io/normalize.css/</code></pre>) or 'reset.css' <br />(<pre class="inline"><code>https://meyerweb.com/eric/tools/css/reset/</code></pre>) as the first CSS in your project, in order to remove/adjust default browser styling that may affect the look and feel</section>
-            <section>Use minimum specificity whenever possible <br /> <img class="css-specifishity" src="../assets/css-specifishity.PNG" /></section>
+            <section>Use minimum specificity whenever possible <br /> <img class="css-specifishity" src="assets/css-specifishity.PNG" /></section>
             <section>Use camelCase notation for IDs (e.g.: <pre class="inline"><code>#submitButton</code></pre>) and dashed-notation for classes (e.g.: <pre class="inline"><code>.layer-wrapper</code></pre>) </section>
             <section>Don't repeat the same CSS selector in the same file:
                     <pre>
@@ -108,7 +112,7 @@
             </section>
             <section>
                 When using <pre class="inline"><code class="css">z-index</code></pre> assign it the smallest value that suits your needs: <br/>
-                <img class="z-index-demo" src="../assets/z-index.PNG" />
+                <img class="z-index-demo" src="assets/z-index.PNG" />
                 <small>Z-index only works on positioned elements:
                     <pre class="inline"><code class="css">position: absolute;</code></pre>
                     <pre class="inline"><code class="css">position: relative;</code></pre>
@@ -117,14 +121,15 @@
             </section>
         </section>
         <section>
-            <section class="js-logo"><img src="../assets/js.png" /></section>
+            <section class="js-logo"><img src="assets/js.png" /></section>
         </section>
 
     </div>
   </div>
 
-  <script src="../node_modules/reveal.js/lib/js/head.min.js"></script>
-  <script src="../node_modules/reveal.js/js/reveal.js"></script>
+  <script src="./src/js/head.min.js"></script>
+  <script src="./src/js/reveal.js"></script>
+  <script src="./src/js/main.js"></script>
 
 </body>
 </html>
