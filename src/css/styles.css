@@ -1,0 +1,20 @@
+.reveal .html-logo img,
+.reveal .css-logo img {
+    background-color: #fff;
+}
+
+.reveal .js-logo img {
+    width: 55%;
+}
+
+.reveal pre.inline {
+    display: inline-block;
+    vertical-align: middle;
+    width: auto;
+    line-height: .8em;
+}
+
+.reveal img {
+    display: inline-block;
+    max-width: 48%;
+}
