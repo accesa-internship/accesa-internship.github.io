@@ -27,8 +27,19 @@
         <section>
             <section class="html-logo"><img src="assets/html5.png" /></section>
             <section>Use <pre class="inline"><code>&lt;!DOCTYPE html&gt;</code></pre> at the beginning of each HTML file</section>
-            <section>Include all <pre class="inline"><code>&lt;link&gt;</code></pre> tags inside <pre class="inline"><code>&lt;head&gt;</code></pre></section>
-            <section>Include all <pre class="inline"><code>&lt;script&gt;</code></pre> tags right before the <pre class="inline"><code>&lt;/body&gt;</code></pre> tag </section>
+            <section>Include all <pre class="inline"><code>&lt;link&gt;</code></pre> tags inside <pre class="inline"><code>&lt;head&gt;</code></pre>
+                <pre><code data-trim>
+                    &lt;head&gt;
+                    &lt;link rel=&quot;stylesheet&quot; href=&quot;./styles/app.css&quot; /&gt;
+                    &lt;/head&gt;
+                </code></pre>
+            </section>
+            <section>Include all <pre class="inline"><code>&lt;script&gt;</code></pre> tags right before the <pre class="inline"><code>&lt;/body&gt;</code></pre> tag
+                <pre><code data-trim>
+                    &lt;script src=&quot;./scripts/app.min.js&quot;&gt;&lt;/script&gt;
+                    &lt;/body&gt;
+                </code></pre>
+            </section>
             <section>Include relevant <pre class="inline"><code>&lt;meta&gt;</code></pre> tags (e.g.: for responsive layout, for character encoding, for Internet Explorer rendering engine usage):
                     <pre>
                         <code class="html" data-trim>
@@ -40,7 +51,10 @@
             </section>
             <section>Include favicon <pre class="inline"><code>&lt;link&gt;</code></pre> tag and don't forget to add the <pre class="inline"><code>&lt;title&gt;</code></pre> inside <pre class="inline"><code>&lt;head&gt;</code></pre>:
                 <pre><code data-trim>&lt;link rel=&quot;icon&quot; href=&quot;favicon.ico&quot;&gt;</code></pre></section>
-            <section>Use semantic markup, not just throwing <pre class="inline"><code>&lt;div&gt;</code></pre>s everywhere (try to use HTML5 elements and attributes where possible)</section>
+            <section>
+                Use semantic markup, not just throwing <pre class="inline"><code>&lt;div&gt;</code></pre>s everywhere (try to use HTML5 elements and attributes where possible)
+                <pre><code data-trim>https://www.w3schools.com/html/html5_semantic_elements.asp</code></pre>
+            </section>
             <section>Know the difference between block-level elements <br />(<pre class="inline"><code>&lt;div&gt;, &lt;p&gt;, &lt;h1&gt;, &lt;ul&gt;, &lt;section&gt;</code></pre> etc.) and inline elements <br />(<pre class="inline"><code>&lt;span&gt;, &lt;a&gt;</code></pre> etc.)</section>
             <section>Add suggestive <pre class="inline"><code>class</code></pre> attributes to elements, in order to use them in CSS</section>
             <section>Add <pre class="inline"><code>id</code></pre>s where needed for binding handlers to elements in JS and make sure the <pre class="inline"><code>id</code></pre>s are unique per page</section>
@@ -71,11 +85,11 @@
                     <pre>
                         <code class="css" data-trim>
                             .container {
-                            background-color: transparent;
-                            background-image: url('../../images/pattern.png');
-                            background-repeat: no-repeat;
-                            background-position: 0 0;
-                            background-size: 100% 100%;
+                                background-color: transparent;
+                                background-image: url('../../images/pattern.png');
+                                background-repeat: no-repeat;
+                                background-position: 0 0;
+                                background-size: 100% 100%;
                             }
                         </code>
                     </pre>
@@ -83,7 +97,7 @@
                     <pre>
                         <code class="css" data-trim>
                             .container {
-                            background: url('../../images/pattern.png') no-repeat 0 0 / 100% 100% transparent;
+                                background: url('../../images/pattern.png') no-repeat 0 0 / 100% 100% transparent;
                             }
                         </code>
                     </pre>
@@ -94,9 +108,9 @@
                         <code class="css" data-trim>
                             body,
                             html {
-                            width: 100%;
-                            height: 100%;
-                            overflow: hidden;
+                                width: 100%;
+                                height: 100%;
+                                overflow: hidden;
                             }
                         </code>
                     </pre>
@@ -104,9 +118,9 @@
                     <pre>
                         <code class="css" data-trim>
                             body, html {
-                            width: 100%;
-                            height: 100%;
-                            overflow: hidden;
+                                width: 100%;
+                                height: 100%;
+                                overflow: hidden;
                             }
                         </code>
                     </pre>
@@ -120,22 +134,174 @@
                     <pre class="inline"><code class="css">position: fixed;</code></pre>
                 </small>
             </section>
+            <section>
+                Use Image Sprites for small images and icon fonts whenever possible <br />(e.g. <pre class="inline"><code>http://fontawesome.io/</code></pre>, <pre class="inline"><code>http://glyphicons.com/</code></pre>):
+                <br />
+                <img src="./assets/social-icons.jpg" />
+                <pre><code data-trim>
+                    .icon,
+                    .icon.facebook {
+                        width: 54px;
+                        height: 54px;
+                        background: url('social-icons.jpg') no-repeat 0 0 transparent;
+                    }
+
+                    .icon.twitter {
+                        background-position: -80px 0;
+                    }
+                </code></pre>
+            </section>
         </section>
         <section>
             <section class="js-logo"><img src="assets/js.png" /></section>
-            <section>Wrap code inside IIFEs (Immediately Invokable Function Expressions) in order not to pollute the global namespace</section>
-            <section>Single responsibility principle (break code in multiple functions than only do one thing)</section>
-            <section>Comment the code (including JSDoc before function signature)</section>
-            <section>Use 'strict' mode inside functions</section>
-            <section>Use closures in order to expose public APIs</section>
-            <section>Avoid styling from JS</section>
-            <section>Try to use one var statement per function</section>
-            <section>Use camelCase notation for both vars and function names, and use verbs as function names (e.g. readFromInput())</section>
-            <section>Cache vars and jQuery objects</section>
-            <section>Define constants for values that are being used in multiple places and not changed</section>
-            <section>Use defensive coding (check types using 'typeof', 'instanceof' etc.)</section>
+            <section>Wrap code inside IIFEs (Immediately Invokable Function Expressions) in order not to pollute the global namespace:
+                <pre>
+                    <code data-trim>
+                        (function(){
+                            /*** Your code here...***/
+                        })();//<- This paranthesis shows that the anonymous function is invoked right after it is read by the interpreter
+                    </code>
+                </pre>
+            </section>
+            <section>Use strict equality / inequality <pre class="inline"><code>===</code></pre> / <pre class="inline"><code>!==</code></pre> instead of simple equality / inequality <pre class="inline"><code>==</code></pre> / <pre class="inline"><code>!=</code></pre>:
+                <pre>
+                    <code data-trim>
+                        var a = 1,
+                        b = '1';
+
+                        if(a == b) { //<- true
+                            //do something
+                        }
+
+                        if(a === b) { //<- false
+                            //do something else
+                        }
+                    </code>
+                </pre>
+            </section>
+            <section>Think about the Single Responsibility Principle (break code in multiple functions that only do one thing)</section>
+            <section>Comment the code (including JSDoc before function signature):
+                <pre><code data-trim>
+                    /**
+                    * Adds 2 numbers
+                    * @param param1 Number
+                    * @param param2 Number
+                    * @returns Number
+                    */
+                    function sum(param1, param2) {
+
+                        if(typeof param1 !== 'number' && param2 !== 'number') {
+                            throw new Error('Invalid parameters!');
+                        }
+
+                        return param1 + param2;
+                    }
+                </code></pre>
+            </section>
+            <section>Use 'strict' mode inside functions:
+                <pre><code data-trim>
+                    (function(){
+                    'use strict';
+
+                        a = 1;
+                    })();//Throws a reference error: 'a is not defined!'
+
+                    (function(){
+                        a = 1;
+                    })();//Adds 'a' to the Global namespace => window.a = 1;
+                </code></pre>
+            </section>
+            <section>Use Closures in order to expose private members of functions / public APIs:
+                <pre><code data-trim>
+                    //utils.js
+                    function MathUtils () {
+                    var add = function(param1, param2) {
+
+                        if (typeof param1 !== 'number' && typeof param2 !== 'number') {
+                            throw new Error('Cannot perform operation, invalid parameters!');
+                        }
+
+                        return param1 + param2;
+                    },
+
+                    power = function(base, exponent) {
+
+                        if (typeof base !== 'number' && typeof exponent !== 'number') {
+                            throw new Error('Cannot perform operation, invalid parameters!');
+                        }
+
+                        return Math.pow(base, exponent);
+                    };
+
+
+                        return {
+                            add: add,
+                            pow: power
+                        };
+                    }
+
+                    //app.js
+                    (function(){
+                    'use strict';
+
+                        console.log(new MathUtils().pow(2, 3)); //logs 8
+                    })();
+                </code></pre>
+            </section>
+            <section>Avoid styling from JS:
+                <pre><code data-trim>document.getElementById("submitButton").style.color = "red";</code></pre>
+            </section>
+            <section>Learn about JS Scoping & Hoisting:
+                <pre><code data-trim>
+                    var foo = 1;
+
+                    function bar() {
+                        if (!foo) {
+                            var foo = 10;
+                        }
+
+                        alert(foo);
+                    }();
+                </code></pre>
+            </section>
+            <section>Use camelCase notation for both <pre class="inline"><code>var</code></pre>s and <pre class="inline"><code>function</code></pre> names, and use verbs as function names (e.g. <pre class="inline"><code>readFromInput()</code></pre>)</section>
+            <section>
+                Cache jQuery objects:<br />
+                Instead of:
+                <pre><code data-trim>
+                    $('section').on('click', function(e){
+                        alert('Clicked on section!');
+                    }
+
+                    $('section').on('mouseover', function(e) {
+                        alert('Mouse over section!');
+                    }
+                </code></pre>
+
+                you can do:
+
+                <pre><code data-trim>
+                    var section = $('section');
+
+                    section.on('click', function(e){
+                        alert('Clicked on section!');
+                    }
+
+                    section.on('mouseover', function(e) {
+                    alert('Mouse over section!');
+                    }
+                </code></pre>
+
+            </section>
+            <section>Use defensive coding (use <pre class="inline"><code>try{...}catch(){...}</code></pre>, <br /> check types using <pre class="inline"><code>typeof</code></pre>, check object instances using <pre class="inline"><code>instanceof</code></pre> etc.)</section>
         </section>
 
+        <section>
+            <section data-autoslide="1800"><img src="./assets/thank-you.gif" /></section>
+        </section>
+        <section>
+            <section><img src="./assets/q&a.png" style="background: none; border: none;"/></section>
+        </section>
     </div>
   </div>
 
