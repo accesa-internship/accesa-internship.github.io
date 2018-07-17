@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Frontend Coding Best Practices</title>
+  <title>Frontend Coding Guidelines</title>
     <link rel="shortcut icon" href="//www.accesa.eu/wp-content/uploads/2015/07/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="//www.accesa.eu/wp-content/uploads/2015/07/favicon-penege.png">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -19,7 +19,6 @@
   
   <div class="reveal">
     <div class="slides">
-
         <section>
             <section class="html-logo"><img src="assets/html5.png" /></section>
             <section>Use <pre class="inline"><code>&lt;!DOCTYPE html&gt;</code></pre> at the beginning of each HTML file</section>
@@ -291,7 +290,386 @@
             </section>
             <section>Use defensive coding (use <pre class="inline"><code>try{...}catch(){...}</code></pre>, <br /> check types using <pre class="inline"><code>typeof</code></pre>, check object instances using <pre class="inline"><code>instanceof</code></pre> etc.)</section>
         </section>
+        <section>
+            <section class="js-logo"><img src="assets/ES6.jpeg" /></section>
+            <section>A few important features introduced in ES6:
+                <ol>
+                    <li>Default Parameters</li>
+                    <li>Template Literals</li>
+                    <li>Multi-line Strings</li>
+                    <li>Destructuring Assignment</li>
+                    <li>Enhanced Object Literals</li>
+                    <li>Arrow Functions</li>
+                    <li>Promises</li>
+                    <li>Block-scoped Constructs <pre class="inline"><code>let</code></pre> and <pre class="inline"><code>const</code></pre></li>
+                    <li>Classes</li>
+                    <li>Modules</li>
+                </ol>
+            </section>
+            <section>
+                Default Parameters (ES5):
+                <pre>
+                    <code data-trim>
+                        var link = function (height, color, url) {
+                            var height = height || 50
+                            var color = color || 'red'
+                            var url = url || 'http://example.com'
+                            ...
+                        }
+                    </code>
+                </pre>
+                Default Parameters (ES6):
+                <pre>
+                    <code data-trim>
+                        var link = function(height = 50, color = 'red', url = 'http://example.com') {
+                          ...
+                        }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Template Literals (ES5):
+                <pre>
+                    <code data-trim>
+                        var name = 'Your name is ' + first + ' ' + last + '.'
+                        var url = 'http://localhost:3000/api/messages/' + id
+                    </code>
+                </pre>
+                Template Literals (ES6):
+                <pre>
+                    <code data-trim>
+                        var name = `Your name is ${first} ${last}.`
+                        var url = `http://localhost:3000/api/messages/${id}`
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Multi-line Strings (ES5):
+                <pre>
+                    <code data-trim>
+                        var roadPoem = 'Then took the other, as just as fair,\n\t'
+                            + 'And having perhaps the better claim\n\t'
+                            + 'Because it was grassy and wanted wear,\n\t'
+                            + 'Though as for that the passing there\n\t'
+                            + 'Had worn them really about the same,\n\t'
 
+                        var fourAgreements = 'You have the right to be you.\n\
+                            You can only be you when you do your best.'
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Multi-line Strings (ES6):
+                <pre>
+                    <code data-trim>
+                        var roadPoem = `Then took the other, as just as fair,
+                            And having perhaps the better claim
+                            Because it was grassy and wanted wear,
+                            Though as for that the passing there
+                            Had worn them really about the same,`
+
+                        var fourAgreements = `You have the right to be you.
+                            You can only be you when you do your best.`
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Destructuring Assignment (ES5):
+                <pre>
+                    <code data-trim>
+                        var data = $('body').data(), // data has properties house and mouse
+                            house = data.house,
+                            mouse = data.mouse
+
+                        var jsonMiddleware = require('body-parser').json
+                        var body = req.body, // body has username and password
+                          username = body.username,
+                          password = body.password
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Destructuring Assignment (ES6):
+                <pre>
+                    <code data-trim>
+                        var {house, mouse} = $('body').data() // we'll get house and mouse variables
+
+                        var {json: jsonMiddleware} = require('body-parser')
+
+                        var {username, password} = req.body
+
+                        var [col1, col2]  = $('.column'),
+                            [line1, line2, line3, , line5] = file.split('\n')
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Object Literals in ES5:
+                <pre>
+                    <code data-trim>
+                        var serviceBase = {port: 3000, url: 'example.com'},
+                            getAccounts = function(){return [1,2,3]}
+
+                        var accountServiceES5 = {
+                          port: serviceBase.port,
+                          url: serviceBase.url,
+                          getAccounts: getAccounts,
+                          toString: function() {
+                            return JSON.stringify(this.valueOf())
+                          },
+                          getUrl: function() {return "http://" + this.url + ':' + this.port},
+                          valueOf_1_2_3: getAccounts()
+                        }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Object Literals in ES6:
+                <pre>
+                    <code data-trim>
+                        var getAccounts = function(){return [1,2,3]}
+
+                        var accountService = {
+                            getAccounts,
+                            toString() {return JSON.stringify((super.valueOf()))},
+                            getUrl() {return "http://" + this.url + ':' + this.port},
+                            [ 'valueOf_' + getAccounts().join('_') ]: getAccounts()
+                        }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Arrow Functions in ES6 allow easy handling of <pre class="inline"><code>this</code></pre>:
+
+                ES5 handling of <pre class="inline"><code>this</code></pre>:
+                <pre>
+                    <code data-trim>
+                        var self = this
+                        $('.btn').click(function(event){
+                          self.sendData()
+                        })
+                    </code>
+                </pre>
+                With Arrow Functions:
+                <pre>
+                    <code data-trim>
+                        $('.btn').click((event) =>{
+                          this.sendData()
+                        })
+                    </code>
+                </pre>
+            </section>
+            <section>
+                ES5 way of creating an Array based on another array:
+                <pre>
+                    <code data-trim>
+                        var ids = ['5632953c4e345e145fdf2df8','563295464e345e145fdf2df9']
+                        var messages = ids.map(function (value) {
+                          return "ID is " + value // explicit return
+                        })
+                    </code>
+                </pre>
+                With Arrow Functions and Template Literals:
+                <pre>
+                    <code data-trim>
+                        var ids = ['5632953c4e345e145fdf2df8','563295464e345e145fdf2df9']
+                        var messages = ids.map(value => `ID is ${value}`) // implicit return
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <p class="fragment">ES6 introduces a standard Promise implementation</p>
+
+                Example of ES5 delayed executions with <pre class="inline"><code>setTimeout()</code></pre>:
+                <pre>
+                    <code data-trim>
+                        setTimeout(function(){
+                          console.log('After 1 sec!');
+                          setTimeout(function(){
+                            console.log('After 2 sec!')
+                          }, 1000)
+                        }, 1000)
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Using ES6 Promises (and Arrow Functions):
+                <pre>
+                    <code data-trim>
+                        var wait1000 =  ()=> new Promise((resolve, reject)=> {setTimeout(resolve, 1000)})
+
+                        wait1000()
+                          .then(function() {
+                            console.log('Yay!')
+                            return wait1000()
+                          })
+                          .then(function() {
+                            console.log('Wheeyee!')
+                          })
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Block-Scoped Constructs <pre class="inline"><code>let</code></pre> and <pre class="inline"><code>const</code></pre>
+
+                Example of variable scoping using <pre class="inline"><code>var</code></pre>:
+                <pre>
+                    <code data-trim>
+                        function calculateTotalAmount (vip) {
+                          var amount = 0
+                          if (vip) {
+                            var amount = 1
+                          }
+                          { // more blocks!
+                            var amount = 100
+                            {
+                              var amount = 1000
+                              }
+                          }
+                          return amount
+                        }
+
+                        console.log(calculateTotalAmount(true))
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Using <pre class="inline"><code>let</code></pre>:
+                <pre>
+                    <code data-trim>
+                        function calculateTotalAmount (vip) {
+                          var amount = 0 // probably should also be let, but you can mix var and let
+                          if (vip) {
+                            let amount = 1 // first amount is still 0
+                          }
+                          { // more blocks!
+                            let amount = 100 // first amount is still 0
+                            {
+                              let amount = 1000 // first amount is still 0
+                              }
+                          }
+                          return amount
+                        }
+
+                        console.log(calculateTotalAmount(true))
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Using <pre class="inline"><code>const</code></pre>:
+                <pre>
+                    <code data-trim>
+                        function calculateTotalAmount (vip) {
+                          const amount = 0
+                          if (vip) {
+                            const amount = 1
+                          }
+                          { // more blocks!
+                            const amount = 100
+                            {
+                              const amount = 1000
+                              }
+                          }
+                          return amount
+                        }
+
+                        console.log(calculateTotalAmount(true))
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Classes in ES6:
+                <pre>
+                    <code data-trim>
+                        class BaseModel {
+                          constructor(options = {}, data = []) { // class constructor
+                            this.name = 'Base'
+                            this.url = 'http://example.com/api'
+                            this.data = data
+                            this.options = options
+                          }
+
+                            getName() { // class method
+                              console.log(`Class name: ${this.name}`)
+                            }
+                        }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Extending a base class:
+                <pre>
+                    <code data-trim>
+                        class AccountModel extends BaseModel {
+                            constructor(options, data) {
+                                super({private: true}, ['32113123123', '524214691']) //call the parent method with super
+                                this.name = 'Account Model'
+                                this.url +='/accounts/'
+                            }
+                             get accountsData() { //calculated attribute getter
+                                // ... make XHR
+                                return this.data
+                              }
+                        }
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Usage:
+                <pre>
+                    <code data-trim>
+                        let accounts = new AccountModel(5);
+                        accounts.getName();
+                        console.log('Data is: ', accounts.accountsData);
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Declaring a module and using it in ES5 (with require() in case of NodeJS):
+                <pre>
+                    <code data-trim>
+                        //module.js
+                        module.exports = {
+                          port: 3000,
+                          getAccounts: function() {
+                            ...
+                          }
+                        }
+
+                        //main.js
+                        var service = require('module.js')
+                        console.log(service.port) // 3000
+                    </code>
+                </pre>
+            </section>
+            <section>
+                ES6 modules:
+                <pre>
+                    <code data-trim>
+                        //module.js
+                        export var port = 3000
+                        export function getAccounts(url) {
+                          ...
+                        }
+
+                        //main.js
+                        import {port, getAccounts} from 'module'
+                        console.log(port) // 3000
+                        //or
+                        import * as service from 'module'
+                        console.log(service.port) // 3000
+                    </code>
+                </pre>
+            </section>
+            <section>
+                Try it yourself using BABEL:
+                <pre>
+                    <code data-trim>
+                        https://babeljs.io/
+                    </code>
+                </pre>
+            </section>
+        </section>
         <section>
             <section data-autoslide="1800"><img src="./assets/thank-you.gif" /></section>
         </section>
